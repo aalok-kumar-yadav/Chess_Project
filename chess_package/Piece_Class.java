@@ -55,7 +55,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 				final char my_buff[][]=object_of_board.get_board(); //getting board before invoked move method
 				Pawn_Class temp_obj=new  Pawn_Class();
 				
-				temp_bool=temp_obj.move_piddi(us_cnf,x1,y1,x2,y2,ty); //calling move piddi function
+				temp_bool=temp_obj.move_pawn(us_cnf,x1,y1,x2,y2,ty); //calling move piddi function
 
 				final char buff[][]=object_of_board.get_board(); // calling get board function
 					
@@ -88,7 +88,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 			{  
 				char my_buff[][]=object_of_board.get_board();  // getting board from board class
 				
-				 temp_bool=move_horse(us_cnf, x1, y1, x2, y2, ty);
+				 temp_bool=move_rook(us_cnf, x1, y1, x2, y2, ty);
 				 char buff[][]=object_of_board.get_board();
 				 
 				 object_of_board.set_flag_check( true);
@@ -117,7 +117,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 				char my_buff[][]=object_of_board.get_board();  
 				Knight_Class temp_obj=new  Knight_Class();
 			
-				 temp_bool=temp_obj.move_horse(us_cnf,x1,y1,x2,y2,ty);  //calling method of Horse class for move
+				 temp_bool=temp_obj.move_knight(us_cnf,x1,y1,x2,y2,ty);  //calling method of Horse class for move
 					{
 				 char buff[][]=object_of_board.get_board();
 				 
@@ -144,7 +144,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 		  else if((ty=='b')||(ty=='B')){ //checking for camel
 			  
 			  char my_buff[][]=object_of_board.get_board();
-			  boolean temp_b=temp_obj1.move_c(us_cnf,x1,y1,x2,y2,ty);  //calling method of camel class for move
+			  boolean temp_b=temp_obj1.move_bishop(us_cnf,x1,y1,x2,y2,ty);  //calling method of camel class for move
 			  
 			  char buff[][]=object_of_board.get_board();
 			  
@@ -281,7 +281,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 					boolean aman=is_our_type(User,find);  //calling is_our_type method
 					
 					if(aman==true){
-					 bulleya=temp_obj.move_piddi(User,i,j,x2,y2,find); //calling piddi move method
+					 bulleya=temp_obj.move_pawn(User,i,j,x2,y2,find); //calling piddi move method
 				}
 					flag_return= bulleya; //assigning flag
 					
@@ -295,7 +295,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 					boolean aman=is_our_type(User,find);  //calling is_our_type method
 					
 					if(aman==true){
-					 bulleya=move_horse(User,i,j,x2,y2,find);  //calling horse move method
+					 bulleya=move_rook(User,i,j,x2,y2,find);  //calling horse move method
 					 
 					flag_return=bulleya;  //assigning flag
 					}
@@ -336,7 +336,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 					boolean aman=is_our_type(User,find);  //calling is_our_type method
 					
 					if(aman==true){
-					 bul=temp_obj1.move_c(User,i,j,x2,y2,find);   //calling  camel move method
+					 bul=temp_obj1.move_bishop(User,i,j,x2,y2,find);   //calling  camel move method
 					 
 					  flag_return= bul; // assigning flag
 				}
@@ -348,7 +348,7 @@ public class Piece_Class implements Bishop_Class,Rook_Class{
 					
 					boolean aman=is_our_type(User,find);  //calling is_our_type method
 					if(aman==true){
-					  bul=temp_obj1.move_horse(User,i,j,x2,y2,find);  //calling  elephant  move method
+					  bul=temp_obj1.move_rook(User,i,j,x2,y2,find);  //calling  elephant  move method
 					  
 					  flag_return= bul;   // assigning flag
 				}

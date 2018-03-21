@@ -1,6 +1,5 @@
 package chess_package;
 
-import java.awt.Color;
 public class Board_Class {//chess board class
 	static char array_2d_piece[][]=new char[8][8];
 	static boolean flag_is_check=false;
@@ -146,9 +145,7 @@ public class Board_Class {//chess board class
 					return false;
 				}
 			}
-			
-			
-			
+					
 			
 }//end board class
 

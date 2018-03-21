@@ -1,6 +1,4 @@
 package chess_package;
-import java.util.*;
-import java.math.*;
 //queen class implements camel and elephant class
 public class Queen_Class implements Bishop_Class,Rook_Class 
 {
@@ -14,13 +12,13 @@ public class Queen_Class implements Bishop_Class,Rook_Class
 			
 			if(abs1==abs2){
 
-			boolean cnfr =obj_queen.move_c(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
+			boolean cnfr =obj_queen.move_bishop(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
 				return cnfr;
 				
 				}
 			else if(abs2==0||abs1==0){
 				
-		boolean vgf=obj_queen.move_horse(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
+		boolean vgf=obj_queen.move_rook(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
 		return vgf;
 			}
 			else{

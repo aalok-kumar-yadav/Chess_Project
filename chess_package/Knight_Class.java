@@ -8,7 +8,7 @@ public class Knight_Class {
 	
 	
 	
-	public   boolean move_horse(int usr,int x1,int y1,int x2,int y2,char ty){ //move_horse method defined for 
+	public   boolean move_knight(int usr,int x1,int y1,int x2,int y2,char ty){ //move_horse method defined for 
 		
 		Board_Class temp_object=new Board_Class(); //making instance of board class
 		char temp_2d_array[][]=temp_object.get_board(); //getting board from board class

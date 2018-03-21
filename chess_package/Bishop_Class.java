@@ -4,7 +4,7 @@ import java.math.*;
 public interface Bishop_Class{
 
 	  
-	default boolean move_c(int us,int x1,int y1,int x2,int y2,char ty){ //method define of moving camel piece
+	default boolean move_bishop(int us,int x1,int y1,int x2,int y2,char ty){ //method define of moving camel piece
 		
 		Board_Class temp_object=new Board_Class ();
 		char array_2d_piece2[][]= temp_object.get_board(); //getting board from board class

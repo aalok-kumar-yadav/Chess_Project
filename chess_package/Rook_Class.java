@@ -1,9 +1,7 @@
 package chess_package;
-import java.util.Scanner;
-
 public interface Rook_Class {
 
-	default boolean move_horse(int us,int x1,int y1,int x2,int y2,char ty){ //move_e method defined here
+	default boolean move_rook(int us,int x1,int y1,int x2,int y2,char ty){ //move_e method defined here
 		
 		Board_Class temp_object=new Board_Class(); //making composition of board class
 		char array_2d_piece1[][]=temp_object.get_board(); //getting board from board class

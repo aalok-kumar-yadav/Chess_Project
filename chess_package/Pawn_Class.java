@@ -8,7 +8,7 @@ public class Pawn_Class{
 	static char array_2d[][]=new char[8][8];
 	static char array_2d_piece[][]=new char[8][8];
 	
-	public static boolean move_piddi(int user,int x1,int y1,int x2,int y2,char ty){//method of moving piddi
+	public static boolean move_pawn(int user,int x1,int y1,int x2,int y2,char ty){//method of moving piddi
 		
 		Board_Class temp_object=new Board_Class();
 		char temp_2d_array[][]=temp_object.get_board();//getting board from board class
