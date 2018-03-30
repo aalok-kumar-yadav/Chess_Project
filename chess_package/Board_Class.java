@@ -1,56 +1,78 @@
-package chess_package;
+package chess_package;		//chess package
 
-public class Board_Class {//chess board class
-	static char array_2d_piece[][]=new char[8][8];
+public class Board_Class   {		//Board class
+	
+	static Piece_Class array_2d_piece[][]=new Piece_Class[8][8];
 	static boolean flag_is_check=false;
+	static String player_color="white";
 		
-		public  void set_chess_board(){  //set the whole chess board with pieces declared by myself
+		public  void set_chess_board(){	  //set the pieces in the board
 			for(int i=0;i<8;i++){
-				array_2d_piece[1][i]='p';
-				array_2d_piece[6][i]='P';
+				Pawn_Class pawn_obj= new Pawn_Class("white",'p');		//white pawn 
+				array_2d_piece[1][i]=pawn_obj;
 				}
-				array_2d_piece[0][0]='r'; //Rook initialization
-				array_2d_piece[0][7]='r';
+			
+				for(int i=0;i<8;i++){
+					Pawn_Class pawn_obj= new Pawn_Class("black",'P');		//black pawn
+					array_2d_piece[1][i]=pawn_obj;				
+				}
 				
-				array_2d_piece[0][6]='n'; //Knight initialization
-				array_2d_piece[0][1]='n';
+				for(int i=0;i<=7;i+=7) {
+					Rook_Class rook_obj=new Rook_Class("white",'r');
+					array_2d_piece[0][i]=rook_obj; //white Rook initialization
+				}
+				
+				for(int i=1;i<=6;i+=5) {
+					Knight_Class knight_obj=new Knight_Class("white",'n');
+					array_2d_piece[0][i]=knight_obj; //white knight initialization
+				}
+				
+				for(int i=2;i<=5;i++) {
+					Bishop_Class bishop_obj=new Bishop_Class("white",'b');
+					array_2d_piece[0][i]=bishop_obj; //white bishop initialization
+				}
+				
+				King_Class king_obj=new King_Class("white",'k');
+				Queen_Class queen_obj=new Queen_Class("white",'q');
+						array_2d_piece[0][3]=king_obj;  //white king  and queen initialization
+						array_2d_piece[0][4]=queen_obj;
 							
-						array_2d_piece[0][2]='b';  // bishop initialization
-						array_2d_piece[0][5]='b';
+				//second party
 						
-						array_2d_piece[0][3]='q';  //king  and queen initialization
-						array_2d_piece[0][4]='k';
-							
-				//second party initialization
-								
-						array_2d_piece[7][0]='R';  //Rook initialization
-						array_2d_piece[7][7]='R';
-								
-							array_2d_piece[7][1]='N'; //Knight initialization
-							array_2d_piece[7][6]='N';
-									
-							array_2d_piece[7][2]='B';  //Bishop initialization
-							array_2d_piece[7][5]='B';
-												
-							array_2d_piece[7][4]='Q';  //king  and queen initialization
-							array_2d_piece[7][3]='K';
+						for(int i=0;i<=7;i+=7) {
+							Rook_Class rook_obj=new Rook_Class("white",'R');
+							array_2d_piece[7][i]=rook_obj; //Rook initialization
+						}
+						
+						for(int i=1;i<=6;i+=5) {
+							Knight_Class knight_obj=new Knight_Class("white",'N');
+							array_2d_piece[7][i]=knight_obj; //black knight initialization
+						}
+						
+						for(int i=2;i<=5;i++) {
+							Bishop_Class bishop_obj=new Bishop_Class("white",'B');
+							array_2d_piece[7][i]=bishop_obj; //black bishop initialization
+						}
+						
+						King_Class black_king_obj=new King_Class("white",'K');
+						Queen_Class black_queen_obj=new Queen_Class("white",'Q');
+						
+						array_2d_piece[0][3]=black_king_obj;  //black king  and queen initialization
+						array_2d_piece[0][4]=black_queen_obj;				
+						
 																	
 			}
 		
-		public char get_loc_piece(int p,int q){ //method of  location piece object to finding
+		public Piece_Class get_loc_piece(int p,int q){ //method of  location piece object to finding
 			
 				return array_2d_piece[p][q];
 			}
 		
-		 public char[][] get_board(){ //get chess board when called
+		 public Piece_Class[][] get_board(){ //get chess board when called
 				
 				return array_2d_piece;
 			}
 			 
-		 public void set_board(char arr[][]){ //set board after valid move
-			 
-				array_2d_piece=arr;
-			}
 		 
 			public int is_king_alive(){//king's status of alive or not 
 				int count=0;
@@ -59,95 +81,68 @@ public class Board_Class {//chess board class
 				for(int i=0;i<8;i++){
 					for(int j=0;j<8;j++){
 						
-						if(array_2d_piece[i][j]=='k')
-						{//checking first king, i mean suppose white type
+						if(array_2d_piece[i][j].symbol=='k')
+						{		//checking white king
 							king1=1;
 							continue;
 						}
-						else if(array_2d_piece[i][j]=='K')
-						{//checking first king, i mean suppose black type
+						
+						else if(array_2d_piece[i][j].symbol=='K')
+						{		//checking black king
 						
 								king2=2;
 								continue;
-							}else{  //none of found
+							}else{ 	 //none of found
 								continue;
-							
 						}
 					}
 				}
 				count=king1+king2;
-				return count; //returning count
+				return count;	 //return count value
 			}
 			
-			public void show_board(){  //show current board function
+			public void show_board(){	  //show current board function
 				for(int i=0;i<8;i++){
 					for(int j=0;j<8;j++){
-					System.out.printf(array_2d_piece[i][j]+"  ");
+				
+					if(array_2d_piece[i][j].symbol!=0) {
+						System.out.printf(array_2d_piece[i][j]+"  ");
+					}else {
+						System.out.printf('-'+"  ");
+					}
 					}
 					System.out.println();;
 				}
 			}
 			
-			public int get_index_piece(char f){  //getting location of type of piece
-				boolean flag=false;
-				int loc_type=0;
-				for(int i=0;i<8;i++){
-					for(int j=0;j<8;j++){
-						if(array_2d_piece[i][j]==f){
-							loc_type=(8*i)+(j+1);  //converting index to location
-                            flag=true;
-							break;
-						}else{
-							continue;
-						}	
-					}
-						if(flag==true){
-							break;
-						}else{
-							continue;
-						}
-					}
-				return loc_type;
-			}
+
 			
-			public void  set_flag_check(boolean flg) //method of setting flag of is_check_mate class
+			public void  set_flag_check(boolean flg) //method for set is_check_mate flag
 			{  
-			
 				flag_is_check=flg;
 			}
 			
-			public boolean  get_flag_check(){  //method of getting ic_check_mate class
-				
+			public boolean  get_flag_check()		//method of getting is_check_mate flag
+			{  
 				return flag_is_check;
 			}
 			
-			public void set_parti(int c,int d,char type)
-			{  //set particular location in board with piece type
-				array_2d_piece[c][d]=type;
+			public void set_piece(int c,int d,char type)		//set particular location in board with piece type
+			{  
+				array_2d_piece[c][d].symbol=type;
 			}
 			
-			public boolean is_white(char ch){ //checking white type or not
-				if((ch=='Q')||(ch=='K')||(ch=='P')||(ch=='B')||(ch=='N')||(ch=='R')){
-					return true;
-				}
-				else{
-					return false;
-				}
+			public void set_player(String ply)			//method for set player
+			{
+				player_color=ply;
 				
 			}
 			
-			public boolean is_black(char ch){   //checking black type or not
+			public String get_player(){			//method for get player
 				
-				if((ch=='q')||(ch=='k')||(ch=='p')||(ch=='b')||(ch=='n')||(ch=='r')){
-					return true;
-				}
-				else{
-					return false;
-				}
+				return player_color;
 			}
-					
+						
 			
-}//end board class
+}	//end board class
 
-	
-	

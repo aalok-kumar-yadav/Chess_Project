@@ -1,8 +1,9 @@
-package chess_package;//Hello chess game
+package chess_package;  //chess package
 import java.util.*;
 
-public class Game_Class {//game class 
-	static char you_r_not[][]=new char[8][8];
+public class Game_Class {		//game class for start game
+	
+	static Piece_Class you_r_not[][]=new Piece_Class[8][8];
 		public static void main(String arg[]){//main method defined
 			Scanner input=new Scanner(System.in);
 			 Board_Class object_board=new Board_Class();//board class composition
@@ -29,7 +30,7 @@ public class Game_Class {//game class
 			System.out.println("Enter destination's 'y' cordinate ");
 			int y2=input.nextInt();
 		    
-		    char obj_type;
+		    Piece_Class obj_type;
 		    object_board.set_chess_board();
 		    
 	    User_Class usr_obj=new User_Class();  //composition of user class object making
@@ -38,11 +39,11 @@ public class Game_Class {//game class
 		while(count<500){//while loop of many times for turn
 			
 			you_r_not=	object_board.get_board();
-		if(((x1>=0&&x1<=7) &&(y1>=0&&y1<=7)&& (x2>=0&&x2<=7)&&(y2>=0&&y2<=7))&&you_r_not[x1][y1]!=0){//if else for checking valid coordinate or not
+		if(((x1>=0&&x1<=7) &&(y1>=0&&y1<=7)&& (x2>=0&&x2<=7)&&(y2>=0&&y2<=7))&&you_r_not[x1][y1].symbol!=0){//if else for checking valid coordinate or not
 		
 	    obj_type=object_board.get_loc_piece(x1,y1);  //getting source position's piece type
 	    
-		boolean confirm=usr_obj.start(1,x1,y1,x2,y2,obj_type);  //start method for start game ,calling user class method
+		//boolean confirm=usr_obj.start(1,x1,y1,x2,y2,obj_type);  //start method for start game ,calling user class method
 		
 		
 				int result=object_board.is_king_alive();  // method calling for king alive condition

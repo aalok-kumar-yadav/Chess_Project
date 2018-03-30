@@ -1,30 +1,28 @@
 package chess_package;
-//queen class implements camel and elephant class
-public class Queen_Class implements Bishop_Class,Rook_Class 
-{
-	//method of queen piece for any user
-	public static boolean move_queen (int usr,int x1,int y1,int x2,int y2,char ty){
-		//making own class object
-		Queen_Class obj_queen=new Queen_Class(); 
-		
-			int abs1=Math.abs(x2-x1); //absolute value finding
-			int abs2=Math.abs(y2-y1);
-			
-			if(abs1==abs2){
 
-			boolean cnfr =obj_queen.move_bishop(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
-				return cnfr;
-				
-				}
-			else if(abs2==0||abs1==0){
-				
-		boolean vgf=obj_queen.move_rook(usr, x1,y1,x2,y2,ty);//calling camel function and assign boolean 
-		return vgf;
-			}
-			else{
-	   
-	    	return false;
-	    }
+public class Queen_Class extends Piece_Class
+{
+	 Queen_Class(String col, char sym){
+		 this.color=col;
+		 this.symbol=sym;
+	 }
 	
-		}//move_queen method end
-} //queen class end
+	public  boolean move_piece (int x1,int y1,int x2,int y2){
+		
+		boolean mov_ret=false;
+		int abs1=Math.abs(x2-x1); //absolute value finding
+		int abs2=Math.abs(y2-y1);
+		
+		if(abs1==abs2) {
+			Bishop_Class bishop_obj=new Bishop_Class();
+			mov_ret=bishop_obj.move_piece(x1, y1, x2, y2);
+			
+		}else if(abs2==0||abs1==0) {
+			Rook_Class rook_obj=new Rook_Class();
+			mov_ret=rook_obj.move_piece(x1, y1, x2, y2);
+		}
+		
+		return mov_ret;
+	}
+	
+} //end of queen class
